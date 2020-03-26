@@ -13,11 +13,9 @@ namespace CreditCardChecker
             bool isValid = false;
             if (creditCardNumber.Length == 16 && CheckString(creditCardNumber))
             {
-                int evenSum = GetNumberSumOnEvenPosition(creditCardNumber);
-                int oddSum = GetNumberSumOnOddPosition(creditCardNumber);
-                int lastNumber = Convert.ToInt32(creditCardNumber[15] - '0');
-
-                if ((evenSum + oddSum + lastNumber) % 10 == 0)
+                if ((GetNumberSumOnEvenPosition(creditCardNumber) + 
+                    GetNumberSumOnOddPosition(creditCardNumber) + 
+                    (Convert.ToInt32(creditCardNumber[15] - '0'))) % 10 == 0)
                 {
                     isValid = true;
                 }
